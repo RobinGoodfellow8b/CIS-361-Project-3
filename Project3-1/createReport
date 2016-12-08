@@ -1,0 +1,30 @@
+#!/bin/bash
+
+FNAME=$1
+i=0
+
+echo ""
+
+rm $FNAME 2> /dev/null
+while read thing
+do
+	let "i += 1"	
+	echo $thing
+	echo $thing >> $FNAME
+done;
+
+j=$(cat orig.txt | wc -l)
+
+
+
+echo ""
+echo "The number of lines in the input file is $j."
+echo "The number of lines in the output file is $i."
+
+echo "" >> $FNAME
+echo "The number of lines in the input file is $j." >> $FNAME
+echo "The number of lines in the output file is $i." >> $FNAME
+
+echo ""
+
+rm orig.txt

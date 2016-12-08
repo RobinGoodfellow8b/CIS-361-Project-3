@@ -1,0 +1,21 @@
+make: Entering directory `/home/schuchma/Desktop/Project3-2/tmp/edwardsj'
+make: `cipher' is up to date.
+make: Leaving directory `/home/schuchma/Desktop/Project3-2/tmp/edwardsj'
+make: Entering directory `/home/schuchma/Desktop/Project3-2/tmp/edwardsj'
+./cipher 1 5 data.txt data.out
+./cipher 2 5 data.out data.bak
+make: Leaving directory `/home/schuchma/Desktop/Project3-2/tmp/edwardsj'
+make: Entering directory `/home/schuchma/Desktop/Project3-2/tmp/harrisr'
+make: `cipher' is up to date.
+make: Leaving directory `/home/schuchma/Desktop/Project3-2/tmp/harrisr'
+make: Entering directory `/home/schuchma/Desktop/Project3-2/tmp/harrisr'
+./cipher 1 5 data.txt data.out
+./cipher 2 5 data.out data.bak
+make: Leaving directory `/home/schuchma/Desktop/Project3-2/tmp/harrisr'
+make: Entering directory `/home/schuchma/Desktop/Project3-2/tmp/smitht'
+make: `cipher' is up to date.
+make: Leaving directory `/home/schuchma/Desktop/Project3-2/tmp/smitht'
+make: Entering directory `/home/schuchma/Desktop/Project3-2/tmp/smitht'
+./cipher 1 5 data.txt data.out
+./cipher 2 5 data.out data.bak
+make: Leaving directory `/home/schuchma/Desktop/Project3-2/tmp/smitht'

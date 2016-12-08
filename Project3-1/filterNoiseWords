@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function next() {
+	for s in $*; do
+		echo $s;
+		break;
+	done;
+}
+
+rm tmp.txt 2> /dev/null
+
+while read line
+do
+	disallowed=$(<"$1")
+	if ! [[ "$disallowed" == *"$(next $line)"* ]] ; then
+		echo $line >> tmp.txt;
+	fi;
+done;
+
+awk '!a[$0]++' tmp.txt
+rm tmp.txt 2> /dev/null

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+FNAME=$1
+
+function next() { echo $1; }
+function rest() { shift; echo $*; }
+space=" "
+
+rm output.txt 2> /dev/null
+function shifter() {
+	start=$*	
+	strings=$(echo "${start//[$'\t\r\n']}");
+
+	for i in $strings; do
+		strings=$(rest $strings)$space$(next $strings);
+		echo $strings;
+	done
+}
+
+rm orig.txt 2> /dev/null
+while read name
+do
+	echo $name >> orig.txt	
+	#strings=$(<"$FNAME");
+	shifter $name ;
+done < "$FNAME"; 

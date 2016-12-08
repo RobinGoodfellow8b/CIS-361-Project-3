@@ -1,0 +1,48 @@
+#!/bin/bash
+
+FNAME=$1
+
+mkdir tmp
+unzip $FNAME -d tmp
+list=$(ls -1)
+cd tmp
+
+for file in *; do
+	name=$(echo $file | awk -F'[_]' '{print $2}')
+	if [ ! -d $name ]; then
+		mkdir $name
+	fi;
+	
+	att=$(echo $file | awk -F'[_]' '{print $(NF-1)}')
+	if [[ $att = "attempt" ]]; then
+		mv "$file" "$name/memo.txt"
+	else
+		title=$(echo $file | awk -F'[_]' '{print $NF}')
+		mv "$file" "$name/$title"
+	fi;
+done
+
+rm report.txt 2> /dev/null
+list=$(ls -1)
+for file in *; do
+	cd -
+	cp data.txt tmp/$file/data.txt
+	make -C tmp/$file
+	make -C tmp/$file >> tmp/report.txt
+	make test -C tmp/$file/
+	make test -C tmp/$file/ >> tmp/report.txt
+	rm tmp/$file/data.txt
+	cd tmp
+done;
+
+list=$(ls -1)
+for file in *; do
+	cd -	
+	cp -rf tmp/$file $file
+	cd tmp
+done;
+
+cd -
+rm -rf tmp
+
+cd ..
